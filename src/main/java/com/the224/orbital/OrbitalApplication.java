@@ -1,17 +1,21 @@
 package com.the224.orbital;
 
-import com.the224.orbital.controller.FileController;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = FileController.class)
 public class OrbitalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrbitalApplication.class, args);
 	}
 
+	@Bean
+	public CommandLineRunner initializer() {
+		System.out.println("test");
+		return (args) -> {};
+	}
 
 }

@@ -2,10 +2,15 @@ package com.the224.orbital.domain;
 
 public class File {
 
-    public String name;
-    public String path;
-    public boolean readonly = true;
+    private String name;
+    private String path;
+    private Long size;
+    private String extension;
+    private boolean readonly = true;
 
+    public File(String path) {
+        this.path = path;
+    }
 
 
 

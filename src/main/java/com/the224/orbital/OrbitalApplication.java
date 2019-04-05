@@ -1,5 +1,6 @@
 package com.the224.orbital;
 
+import com.the224.orbital.util.ConfigUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,10 @@ public class OrbitalApplication {
 	@Bean
 	public CommandLineRunner initializer() {
 		System.out.println("test");
+
+		ConfigUtils.readConfiguration();
+
+
 		return (args) -> {};
 	}
 

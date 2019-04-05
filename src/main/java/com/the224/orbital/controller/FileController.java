@@ -12,10 +12,14 @@ public class FileController {
 
     @Autowired private FileService fileService;
 
+
     public FileController() {
+
+
+
+
         System.out.println("Wuuut");
     }
-
 
     @GetMapping("/test")
     public String home() {

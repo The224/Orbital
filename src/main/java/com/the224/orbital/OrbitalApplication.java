@@ -1,26 +1,23 @@
 package com.the224.orbital;
 
-import com.the224.orbital.util.ConfigUtils;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+
+import java.util.Properties;
 
 @SpringBootApplication
 public class OrbitalApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrbitalApplication.class, args);
-	}
+		SpringApplication app = new SpringApplication(OrbitalApplication.class);
+		Properties properties = new Properties();
 
-	@Bean
-	public CommandLineRunner initializer() {
-		System.out.println("test");
+		if (args.length == 1) {
+			properties.setProperty("spring.resources.static-locations", args[0]);
+		}
 
-		ConfigUtils.readConfiguration();
-
-
-		return (args) -> {};
+		app.setDefaultProperties(properties);
+		app.run(args);
 	}
 
 }

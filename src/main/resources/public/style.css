@@ -21,11 +21,29 @@ body {
     justify-content: center;
 }
 
+.head-link {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.24s ease-in-out;
+}
+
+.head-link:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .container {
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    margin: 24px;
+}
 
+.error {
+    margin: 24px;
 }
 
 .title  {
@@ -33,7 +51,6 @@ body {
     flex-direction: row;
     align-items: center;
 }
-
 
 .title img {
     height: 50px;
@@ -59,6 +76,7 @@ body {
 .github-corner:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out
 }
+
 @keyframes octocat-wave {
 
     0%,

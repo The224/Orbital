@@ -1,13 +1,32 @@
-FROM openjdk:12-jdk-alpine
+##
+# Orbital Docker Image
+###
 
-LABEL maintainer="contact@the224.dev"
+# Step 1: build #
+FROM maven:3-jdk-12-alpine AS builder
 
-VOLUME /orbital
+WORKDIR /source-code
 
-ARG JAR_FILE=target/orbital-0.0.1.jar
+COPY pom.xml /source-code/
 
-COPY ${JAR_FILE} app.jar
+# ## Download source before detecting source code changes
+# RUN mvn install
+
+COPY . /source-code/
+
+RUN mvn package
+
+RUN cp /source-code/target/*.jar ./app.jar
+
+# Step 2: Serve App #
+FROM openjdk:12-jdk-alpine AS deployer
+
+WORKDIR /orbital
+
+COPY --from=builder ./source-code/app.jar ./app.jar
 
 EXPOSE 80
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+LABEL maintainer="contact@the224.dev"
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/orbital/app.jar"]

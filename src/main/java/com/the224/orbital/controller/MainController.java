@@ -1,17 +1,18 @@
 package com.the224.orbital.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = {"http://localhost:3000"})
-@RestController
+@CrossOrigin(origins = {"http://localhost"})
+@Controller
 public class MainController {
 
     public MainController() { }
 
-//    @RequestMapping("/test")
+//    @RequestMapping("/")
 //    public String index() {
-//        return "Greetings from Spring Boot!";
+//        return "static/index.html";
 //    }
 
 }

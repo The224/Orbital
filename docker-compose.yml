@@ -3,7 +3,7 @@ version: '3'
 services:
   orbital:
     container_name: orbital
-    # image: themarc224/orbital:latest
+    image: themarc224/orbital:latest
     restart: unless-stopped
     volumes:
-      - /path/to/your/files:/orbital/static
+      - ~/static:/orbital/static

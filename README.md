@@ -4,9 +4,19 @@ Orbital is _a file Distributor_ with the main purpose of being **Easy to use, ea
 
 ## How to use
 
+By fetching or building it:
+
 ```bash
-docker run -v /path/to/your/files:/orbital/static orbital
+docker run -v ~/static:/orbital/static orbital
 ```
+
+Or with docker compose:
+
+```bash
+docker-compose up
+```
+
+By default, your static volume will be bound with `~/static`
 
 ## To Do
 

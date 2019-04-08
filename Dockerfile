@@ -7,14 +7,15 @@ FROM maven:3-jdk-12-alpine AS builder
 
 WORKDIR /source-code
 
-COPY pom.xml /source-code/
+COPY pom.xml /source-code
+COPY mvnw /source-code
 
-# ## Download source before detecting source code changes
-# RUN mvn install
+## Cache dependencies
+RUN ["mvn", "verify", "clean", "--fail-never"]
 
 COPY . /source-code/
 
-RUN mvn package
+RUN ["mvn", "package"]
 
 RUN cp /source-code/target/*.jar ./app.jar
 

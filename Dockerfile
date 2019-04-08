@@ -25,6 +25,8 @@ WORKDIR /orbital
 
 COPY --from=builder ./source-code/app.jar ./app.jar
 
+# RUN mkdir static
+
 EXPOSE 80
 
 LABEL maintainer="contact@the224.dev"

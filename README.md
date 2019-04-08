@@ -1,24 +1,17 @@
-# Orbital 
+# Orbital
 
-Orbital is _a file Distributor_ who the main purpose is to be **Easy to use, easy to share**.
+Orbital is _a file Distributor_ with the main purpose of being **Easy to use, easy to share**.
 
-## For now
+## How to use
 
-The project look more like... nothing. The goal is to add value in the future, that's why I choose to use spring boot as main framework.
+```bash
+docker run -v /path/to/your/files:/orbital/static orbital
+```
 
-## To be done
+## To Do
 
 - ~~Easy to use~~
 - File permission
-    - Password Protection
-    - Domain Protection
+  - Password Protection
+  - Domain Protection
 - Analytics Data
-
-
-
-
-
-
-
-
-

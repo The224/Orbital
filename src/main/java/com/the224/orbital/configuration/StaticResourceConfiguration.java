@@ -20,7 +20,7 @@ public class StaticResourceConfiguration implements WebMvcConfigurer {
         // File located on disk
         registry
                 .addResourceHandler("/static/**")
-                .addResourceLocations("file:////")
+                .addResourceLocations("file:///orbital")
                 .setCachePeriod( 3600 )
                 .resourceChain(true);
     }

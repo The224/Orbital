@@ -1,6 +1,8 @@
 # Orbital
 
-Orbital is _a file Distributor_ with the main purpose of being **Easy to use, easy to share**.
+_A File Distributor_ with the main purpose of being **Easy to use, easy to share**.
+
+![Orbital](https://orbital.the224.dev/i/orbital.png)
 
 ## How to use
 
@@ -25,3 +27,11 @@ By default, your static volume will be bound with `~/static`
   - Password Protection
   - Domain Protection
 - Analytics Data
+
+## Contributing
+
+If you are interested in fixing issues and contributing directly to the code base, please see [CONTRIBUTING](./CONTRIBUTING.md)
+
+## License
+
+Licensed under the Apache License.

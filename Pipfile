@@ -1,0 +1,31 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+sqlalchemy = "*"
+sqlalchemy-utils = "*"
+databases = "*"
+aiosqlite = "*"
+alembic = "*"
+sentry-sdk = "*"
+asyncpg = "*"
+psycopg2 = "*"
+pytest = "*"
+pytest-cov = "*"
+email-validator = "*"
+requests = "*"
+assertpy = "*"
+aiofiles = "*"
+
+[requires]
+python_version = "3.7"
+
+[dev-packages]
+ipython = "*"
+mypy = "*"
+pylint = "*"
+rope = "*"

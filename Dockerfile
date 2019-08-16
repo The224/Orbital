@@ -2,34 +2,38 @@
 # Orbital Docker Image
 ###
 
-# Step 1: build #
-FROM maven:3-jdk-12-alpine AS builder
+FROM python:3.7-slim
 
-WORKDIR /source-code
+ARG USER_ID
+ARG GROUP_ID
 
-COPY pom.xml /source-code
-COPY mvnw /source-code
+# Add OS dependency
+RUN set -ex\
+    && apt-get update\
+    && apt-get install -y gcc curl busybox git libpq-dev\
+    && groupadd ${GROUP_ID:+-g $GROUP_ID} -r orbital\
+    && useradd ${USER_ID:+-u $USER_ID} --no-log-init -r -g collabi collabi
 
-## Cache dependencies
-RUN ["mvn", "verify", "clean", "--fail-never"]
+COPY ./requirements.txt /tmp/requirements.txt
 
-COPY . /source-code/
+# Install requirements
+RUN set -ex && pip install --verbose -r /tmp/requirements.txt\
+    && apt-get remove -y gcc
 
-RUN ["mvn", "package"]
+COPY --chown=orbital:orbital . /app
 
-RUN cp /source-code/target/*.jar ./app.jar
+WORKDIR /app
 
-# Step 2: Serve App #
-FROM openjdk:12-jdk-alpine AS deployer
+ENTRYPOINT ["python", "orbital/app.py"]
 
-WORKDIR /orbital
+ENV PYTHONPATH="$PYTHONPATH:/app"
 
-COPY --from=builder ./source-code/app.jar ./app.jar
+ENV ENVIRONMENT="dev"
 
-# RUN mkdir static
-
-EXPOSE 80
+RUN set -ex && ls -lh
 
 LABEL maintainer="contact@the224.dev"
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/orbital/app.jar"]
+EXPOSE 80
+
+CMD ["--help"]
